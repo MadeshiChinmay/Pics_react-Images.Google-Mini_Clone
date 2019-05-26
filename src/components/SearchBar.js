@@ -68,8 +68,13 @@ now we pass that state.term thing in this passed down prop(function) and
 this prop will act as an callback function in parent component
 
 
+Unsplash Api 
+:For images
+unsplash.com/developers
 
+ReactApp -> AJAX CLIENT <-> Unsplash Api
 
+AXIOS is better at handling the requests..
 
 
  */

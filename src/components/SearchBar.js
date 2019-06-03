@@ -11,7 +11,7 @@ class SearchBar extends React.Component {
     //arrow functions bind the function with the 'this' with the class instance
     //another way to bind the this with class instance is to use a constructor
     //and inside it use bind method...
-    onFormSubmit=(event)=>{
+    onFormSubmit=(event)=>{//called automatically by the 
         event.preventDefault();//doesnt automatically submit when enter is pressed
         
         //console.log(this.state.term);

@@ -5,10 +5,40 @@ class ImageCard extends React.Component {
 
     constructor(props){
         super(props);
-
-        this.imageRef=React.createRef();
+        this.state={spans:0}
+        this.imageRef=React.createRef();// gives handle of a certain element
+        //in DOM tree
     }
 
+
+
+    componentDidMount(){
+        // console.log(this.imageRef)
+        // console.log(this.imageRef.current.clientHeight)
+        //this.imageRef.current.clientHeight current is the property
+        // of this.imageRef object
+        // image gets downloaded a little time after the 
+        // component has mounted that is why we are seeing a 0 clientHeight
+        // so to refactor
+        // below is the code
+        this.imageRef.current.addEventListener('load',this.setSpans);
+        /*
+        Here we added a load eventlistener to the img element
+        so when the load event triggers we call the callback function
+        setSpans where now we can access the heights because now the img tag is
+        loaded with the image
+         */
+    }
+    // span provides the unit of rows allocated to each image
+
+    setSpans=()=>{
+        //console.log()
+        const height=this.imageRef.current.clientHeight;
+        const spans=Math.ceil(height/10);//10 is the complete row height
+
+
+        this.setState({spans})
+    }
 
 
     render(){
@@ -16,7 +46,7 @@ class ImageCard extends React.Component {
         const PROPS=this.props.image;
 
         return (
-            <div>
+            <div style={{gridRowEnd:`span ${this.state.spans}`}}>
                 <img 
                     alt={PROPS.description}
                     src={PROPS.urls.regular}
